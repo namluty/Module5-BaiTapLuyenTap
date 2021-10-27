@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 50px 0">
+                <mat-card-title class="alert alert-primary">Old Student</mat-card-title>
+                <div *ngIf="student">
+                    <b>Name Student: </b>
+                    <i style="color: #f92672">{{student.name}}</i><br>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 50px 0">
+                <form class="edit-student" #f="ngForm" (ngSubmit)="f.form.valid&&ngUpdate()" novalidate>
+                    <mat-error class="alert alert-primary">{{status}}</mat-error>
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Name Student:</mat-label>
+                        <input matInput name="nameStudent" [(ngModel)]="student.name" #nameStudent="ngModel" required>
+                        <mat-error *ngIf="nameStudent.hasError('required')">The name Student is required!</mat-error>
+                    </mat-form-field>
+                    <br>
+                    <button mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">Update
+                        Student
+                        <mat-icon color="accent" matSuffix>category</mat-icon>
+                    </button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

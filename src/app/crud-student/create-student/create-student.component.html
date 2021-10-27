@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 50px 0">
+                <form class="create-student" #f="ngForm" (ngSubmit)="f.form.valid && ngCreate()" novalidate>
+                    <mat-error class="alert alert-primary">{{status}}</mat-error>
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Name Student:</mat-label>
+                        <input matInput name="nameStudent" [(ngModel)]="form.name" #nameStudent="ngModel" required>
+                        <mat-icon color="accent" matSuffix>student</mat-icon>
+                        <mat-error *ngIf="nameStudent.hasError('required')">The name Student is required!</mat-error>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field style="width: 350px" color="accent" appearance="outline">
+                        <mat-label>DateOfBirth:</mat-label>
+                        <input matInput name="dateOfBirth" [matDatepicker]="date" [(ngModel)]="form.dateOfBirth"
+                               required>
+                        <mat-datepicker-toggle style="color: #f92672" matSuffix [for]="date"></mat-datepicker-toggle>
+                        <mat-datepicker #date></mat-datepicker>
+                    </mat-form-field>
+                    <br>
+                    <button mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">Create
+                        Student
+                        <mat-icon color="accent" matSuffix>category</mat-icon>
+                    </button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>
